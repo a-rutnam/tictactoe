@@ -16,19 +16,42 @@ var player = 1;
 
 
 $('.box').on('click', function(event) {
-      var id = (event.currentTarget.id);
-      console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
-      //push square to first spot in array
+  var id = (event.currentTarget.id);
+  console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
 
-      if (player === 1)  {
-        $('#img'+event.currentTarget.id).attr('src', 'http://i.imgur.com/wTq9h3q.png');
 
-        player = 2}
 
-      else if (player === 2) {
-        $('#img'+event.currentTarget.id).attr('src', 'http://i.imgur.com/d6ocn90.png');
-        player=1}
-    }) //box
+    if (
+      $('#img'+event.currentTarget.id).attr('src') === ('http://i.imgur.com/d6ocn90.png' || 'http://i.imgur.com/wTq9h3q.png')//why doesn't this work til after a few clicks?
+      )
+      {
+
+      console.log('Square already occupied')
+      return;
+      }
+
+      // how to use return here to make sure next bit of code doesn't run if square occupied
+
+      //if occupied
+
+
+    else if (player === 1){
+      //  game[(event.currentTarget.id)-1]='x';
+      // how to syntax above change of array
+
+      $('#img'+event.currentTarget.id).attr('src', 'http://i.imgur.com/wTq9h3q.png');
+      player = 2
+      } //if p1
+
+    else {
+      $('#img'+event.currentTarget.id).attr('src', 'http://i.imgur.com/d6ocn90.png');
+      player=1
+      } //else p2
+
+
+
+
+  }) //box
 
 
 })//doc ready;
