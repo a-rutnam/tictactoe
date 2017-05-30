@@ -1,7 +1,8 @@
+
 $(document).ready(function () {
   console.log( "The page is ready" );
-
-
+  game = [0,0,0,0,0,0,0,0,0]
+  player = 1;
 // var twoPlayers = (name1, name2){
 //
 // }
@@ -9,47 +10,39 @@ $(document).ready(function () {
 //
 // var $player1 = ($('#player1').val())
 
-var game = [0,0,0,0,0,0,0,0,0]
-var player = 1;
+
 
 // var oImg = img/o.png
 
 
 $('.box').on('click', function(event) {
-  var id = (event.currentTarget.id);
+
+  var id = +event.currentTarget.id //the plus is a quicky way to parseint
+
   console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
 
+  if (game[id] !== 0){
+    console.log('This square is already occupied'); return;
+  }//occupied
 
-
-    if (
-      $('#img'+event.currentTarget.id).attr('src') === ('http://i.imgur.com/d6ocn90.png' || 'http://i.imgur.com/wTq9h3q.png')//why doesn't this work til after a few clicks?
-      )
-      {
-
-      console.log('Square already occupied')
-      return;
-      }
-
-      // how to use return here to make sure next bit of code doesn't run if square occupied
-
-      //if occupied
-
-
-    else if (player === 1){
-      //  game[(event.currentTarget.id)-1]='x';
+// debugger;
+    if (player === 1){
+       game[id]='x';
       // how to syntax above change of array
-
-      $('#img'+event.currentTarget.id).attr('src', 'http://i.imgur.com/wTq9h3q.png');
+      document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='http://i.imgur.com/wTq9h3q.png' />";
       player = 2
       } //if p1
 
     else {
-      $('#img'+event.currentTarget.id).attr('src', 'http://i.imgur.com/d6ocn90.png');
+      game[id]='o';
+      document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='http://i.imgur.com/d6ocn90.png' />";
+      // $('#img'+event.currentTarget.id).attr('src', 'http://i.imgur.com/d6ocn90.png'); //this one doesn't work
       player=1
       } //else p2
 
 
 
+    console.log(game);
 
   }) //box
 
@@ -57,53 +50,6 @@ $('.box').on('click', function(event) {
 })//doc ready;
 
 
-// if playerx selects a div, push id of that square to squaresxArray. HOW TO KNOW WHICH squares*array to push to? if x always starts, it could be a toggle??? if either array has winning combo (think about how sparsley all poss winning combos can be expressed)
-
-  // $('#my_image').on({
-  //     'click': function(){
-  //         $('#my_image').attr('src','img/zen1.png');
-  //     }
-  // });
-
-
-  //if box is clicked,that means it has been assigned x or o.
-  // there are 3 states a square can be in unclicked (no image), clicked (x) and clicked (y)
-
-
-
-
-
-//   $('.examples img').click(function() {
-//     var loc = $(this).attr("src");
-//     $('#image-zoom img').attr("src",loc);
-// });
-
-  // to ID winner contents of idabc*, id*aaa, id*bbb , id*ccc
-
-  //works when  1 img is on hide
-  // $("#A1").click(function() {
-  //     $(this).find('img').toggle();
-  // });
-
-
-
-
-
-
-
-//who plays first:
-  // function myFunction() {
-  //   var random_boolean = Math.random() >= 0.5; {
-  //     if (random_boolean) {
-  //       document.getElementById("demo").innerHTML = "x decides who plays first";
-  //       }
-  //
-  //     else {
-  //       document.getElementById("demo").innerHTML = "y decides who plays first";
-  //       }
-  //   }
-  //
-  // };
 
 
 
