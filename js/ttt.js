@@ -1,54 +1,80 @@
 
 $(document).ready(function () {
-  console.log( "The page is ready" );
+  console.log( "Let's Play!" );
+
   game = [0,0,0,0,0,0,0,0,0]
   player = 1;
-// var twoPlayers = (name1, name2){
-//
-// }
-// twoPlayers('Tom', 'Larry')
-//
-// var $player1 = ($('#player1').val())
+  testWinArray = []
+  testWinArray2 = []
+  possibleWins = ('048'||'246'||'345'||'147'||'012'||'678'||'036'||'258')
+
+// detecting win :
+//on 5th play (i.e after player 1's third go), check following: extract every index he holds in game array. sort (is this nec.?) and if sum of 3numbers is middle number*3, he has won
 
 
-
-// var oImg = img/o.png
 
 
 $('.box').on('click', function(event) {
 
   var id = +event.currentTarget.id //the plus is a quicky way to parseint
-
   console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
 
+  //if occupied:
   if (game[id] !== 0){
-    console.log('This square is already occupied'); return;
-  }//occupied
+    alert('This square is already occupied'); return;
+    }
 
-// debugger;
-    if (player === 1){
-       game[id]='x';
-      // how to syntax above change of array
-      document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='http://i.imgur.com/wTq9h3q.png' />";
-      player = 2
-      } //if p1
+  //if player 1
+  if (player === 1){
+    game[id]='x';
+    testWinArray.push('1');
+    document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='http://i.imgur.com/wTq9h3q.png' />";
+    player = 2
+    }
 
-    else {
-      game[id]='o';
-      document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='http://i.imgur.com/d6ocn90.png' />";
-      // $('#img'+event.currentTarget.id).attr('src', 'http://i.imgur.com/d6ocn90.png'); //this one doesn't work
-      player=1
-      } //else p2
+  //else... p2
+  else {
+    game[id]='o';
+    testWinArray.push('1');
+    document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='http://i.imgur.com/d6ocn90.png' />";
+    player=1
+    }
 
+  if (testWinArray.length === 5){
+    for (i=0;i<game.length;i++) {
+      if (game[i] == "x")
+      testWinArray2.push(i);
+
+      }
+    }
+
+    var xplay3 = testWinArray2.join("")
+    if (xplay3 === possibleWins ){
+      console.log('x wins');
+    }
 
 
     console.log(game);
 
-  }) //box
+  }); //box
 
 
 })//doc ready;
 
+
+//who plays first:
+  // function myFunction() {
+  //   var random_boolean = Math.random() >= 0.5; {
+  //     if (random_boolean) {
+  //       document.getElementById("demo").innerHTML = "x decides who plays first";
+  //       }
+  //
+  //     else {
+  //       document.getElementById("demo").innerHTML = "y decides who plays first";
+  //       }
+  //   }
+  //
+  // };
 
 
 
