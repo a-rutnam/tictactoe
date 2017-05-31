@@ -1,82 +1,97 @@
+var game = [0,0,0,0,0,0,0,0,0];
+
+// get value of name input
+
+var player = 1; //change this depending on what random_boolean chooses
+
+var playerNames = [];
 
 $(document).ready(function () {
   console.log( "Let's Play!" );
 
-  game = [0,0,0,0,0,0,0,0,0]
-  player = 1;
-  testWinArray = []
-  testWinArray2 = []
-  possibleWins = ('048'||'246'||'345'||'147'||'012'||'678'||'036'||'258')
+  $( "#savingsDeposit" ).click(function() {
 
-// detecting win :
-//on 5th play (i.e after player 1's third go), check following: extract every index he holds in game array. sort (is this nec.?) and if sum of 3numbers is middle number*3, he has won
+  var $playname1 = $('#savingsAmount').val()
 
 
+    playerNames.push($playname1);
 
+    return;
+
+  }); //names
+
+
+  // who plays first: how to invoke so that it runs in browser
+// function myFunction() { //what purpose does this serve?
+//   var random_boolean = Math.random() >= 0.5; {
+//
+//     if (random_boolean) {
+//       document.getElementById("demo").innerHTML = "x decides who plays first";
+//     } //if
+//
+//     else {
+//       document.getElementById("demo").innerHTML = "y decides who plays first";
+//     } //else
+//   }//rando bools.
+// };
+
+var checkWin = function (player) {
+// if we called the function as checkWin('x'),
+// then our local variable player will have the value 'x'
+  if( (game[0] === player && game[1] === player && game[2] === player) || //row1
+      (game[3] === player && game[4] === player && game[5] === player) || //row2
+      (game[6] === player && game[7] === player && game[8] === player) || //row3
+      (game[0] === player && game[3] === player && game[6] === player) || //col1
+      (game[1] === player && game[4] === player && game[7] === player) || //col2
+      (game[2] === player && game[5] === player && game[8] === player) || //col3
+      (game[0] === player && game[4] === player && game[8] === player) || //diag1
+      (game[2] === player && game[4] === player && game[6] === player)){ //diag2
+        console.log(player + ' wins');
+        return true;//why does below log despite this
+
+        }//if true do this
+
+  return false; //does this make the code keep going?
+};//checkwins
 
 $('.box').on('click', function(event) {
 
-  var id = +event.currentTarget.id //the plus is a quicky way to parseint
-  console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
+var id = +event.currentTarget.id //the plus is a quicky way to parseint
 
-  //if occupied:
   if (game[id] !== 0){
-    alert('This square is already occupied'); return;
-    }
+    alert('This square is already occupied');
+    return;
+  }//if occupied
 
-  //if player 1
+  //if player 1:
   if (player === 1){
     game[id]='x';
-    testWinArray.push('1');
-    document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='http://i.imgur.com/wTq9h3q.png' />";
-    player = 2
-    }
-
-  //else... p2
-  else {
+    checkWin('x');
+    document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='/Users/anusharutnam/wdi/projects/tictactoe/img/x.gif' />";
+    player = 2;
+  } else {
     game[id]='o';
-    testWinArray.push('1');
-    document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='http://i.imgur.com/d6ocn90.png' />";
-    player=1
-    }
-
-  if (testWinArray.length === 5){
-    for (i=0;i<game.length;i++) {
-      if (game[i] == "x")
-      testWinArray2.push(i);
-
-      }
-    }
-
-    var xplay3 = testWinArray2.join("")
-    if (xplay3 === possibleWins ){
-      console.log('x wins');
-    }
+    checkWin('o');
+    document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='/Users/anusharutnam/wdi/projects/tictactoe/img/porthole.gif' />";
+    player= 1
+  }//else... p2
 
 
     console.log(game);
-
+    console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
   }); //box
 
 
 })//doc ready;
 
+// http://i.imgur.com/d6ocn90.png
 
-//who plays first:
-  // function myFunction() {
-  //   var random_boolean = Math.random() >= 0.5; {
-  //     if (random_boolean) {
-  //       document.getElementById("demo").innerHTML = "x decides who plays first";
-  //       }
-  //
-  //     else {
-  //       document.getElementById("demo").innerHTML = "y decides who plays first";
-  //       }
-  //   }
-  //
-  // };
-
-
+//if stalemate
+//reset button
+//upload img
+//change player dependng on rando
+//no more clicks allowed after win
+//diff appearance themes
 
 
 
@@ -161,4 +176,3 @@ $('.box').on('click', function(event) {
 // Your Github portfolio site
 // Any other front-end project that interests you
 // Use Firebase for something
-// });
