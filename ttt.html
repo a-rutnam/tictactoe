@@ -12,27 +12,24 @@
 
 
 
+
 <h1>Nautical Naughts and Crosses</h1>
 
 
 
 
   <div class="squares">
-      <div class= "box" id="0"><img id='img1' src="" alt=""></div>
-      <div class= "box" id='1'><img id='img2' src="" alt=""></div>
-      <div class= "box" id='2'><img id='img3' src="" alt=""></div>
-      <div class= "box" id='3'><img id='img4' src="" alt=""></div>
-      <div class= "box" id='4'><img id='img5' src="" alt=""></div>
-      <div class= "box" id='5'><img id='img6' src="" alt=""></div>
-      <div class= "box" id='6'><img id='img7' src="" alt=""></div>
-      <div class= "box" id='7'><img id='img8' src="" alt=""></div>
-      <div class= "box" id='8'><img id='img9' src="" alt=""></div>
+      <div class= "box leftCol" id="0"></div>
+      <div class= "box" id='1'></div>
+      <div class= "box" id='2'></div>
+      <div class= "box leftCol" id='3'></div>
+      <div class= "box" id='4'></div>
+      <div class= "box" id='5'></div>
+      <div class= "box leftCol" id='6'></div>
+      <div class= "box" id='7'></div>
+      <div class= "box" id='8'></div>
   </div>
 
-  <div class="balance" id="savingsBalance">Enter player names</div>
-      <input id="savingsAmount" type="text" placeholder="Player 1's name" />
-      <input id="savingsDeposit" type="button" value="Enter" />
-    </div>
 
 
 <!-- <p>Each player picks their symbol</p> -->
@@ -40,20 +37,30 @@
 <!-- <div id="symbols">
   <div id='symbolX'> <img src="img/x.png" </div>
   <div id='symbolY'> <img src="img/o.png" </div> -->
+<div class ="namesAndPlay" >
 
-<!--
-  <button onclick="myFunction()">Who Plays First?</button>
+  <div class="names" ></div>
+      <input id="nameInput" type="text" placeholder="Enter first player's name" />
+
+      <input id="nameEnterButton" type="button" value="Enter" />
+    </div>
+
+<br>
+
+
+ <button class="button">Who Plays First? (X plays first. So, who gets to be X?)</button>
 
   <p id="demo"></p>
 
 
-myimage:
-<img id="my_image" src="img/x.png"/>
 
-<!-- <input id="player1" type="text" placeholder="Player 1 Name" />
-<input id="player2" type="text" placeholder="Player 2 Name" /> -->
+  <button class="reset">Reset board</button>
 
-</div> -->
+   <p id="reset"></p>
+
+  </div>
+
+
 
 
 

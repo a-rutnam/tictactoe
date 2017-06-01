@@ -1,39 +1,60 @@
 var game = [0,0,0,0,0,0,0,0,0];
+var gameWon = false;
+var $img = $('<img>').attr({ src: ''
+});
 
+
+// var showWinner =
 // get value of name input
 
 var player = 1; //change this depending on what random_boolean chooses
 
 var playerNames = [];
 
+
+
+
 $(document).ready(function () {
+
+// if theme === rel
+
+
+// player names
+$( "#nameEnterButton" ).click(function() {
+   nameInput = $('#nameInput').val()
+  playerNames.push(nameInput)
+  $('#nameInput').val("");
+    $('input').attr('placeholder',"Second player's name");
+playerNames;
+  return;
+});
+
+  // who plays first:
+$('.button').on('click', function(event) {
+  var player1 = playerNames[0] //why does this only work in console
+  var player2 = playerNames[1]
+  var random_boolean = Math.random() >= 0.5; {
+    if (random_boolean) {
+      // document.getElementById("demo").innerHTML =
+      alert (player1 + " decides who plays first. Start playing!");
+    } else {
+      // document.getElementById("demo").innerHTML =
+      alert (player2 + " decides who plays first. Start playing!");
+    } //else
+  }//rando bools.
+});//button
+
+// reset
+
+  $( ".reset" ).click(function() {
+
+    $('.box img').remove();
+    game = [0,0,0,0,0,0,0,0,0]
+  });//reset button
+
+
   console.log( "Let's Play!" );
 
-  $( "#savingsDeposit" ).click(function() {
-
-  var $playname1 = $('#savingsAmount').val()
-
-
-    playerNames.push($playname1);
-
-    return;
-
-  }); //names
-
-
-  // who plays first: how to invoke so that it runs in browser
-// function myFunction() { //what purpose does this serve?
-//   var random_boolean = Math.random() >= 0.5; {
-//
-//     if (random_boolean) {
-//       document.getElementById("demo").innerHTML = "x decides who plays first";
-//     } //if
-//
-//     else {
-//       document.getElementById("demo").innerHTML = "y decides who plays first";
-//     } //else
-//   }//rando bools.
-// };
 
 var checkWin = function (player) {
 // if we called the function as checkWin('x'),
@@ -46,39 +67,70 @@ var checkWin = function (player) {
       (game[2] === player && game[5] === player && game[8] === player) || //col3
       (game[0] === player && game[4] === player && game[8] === player) || //diag1
       (game[2] === player && game[4] === player && game[6] === player)){ //diag2
-        console.log(player + ' wins');
-        return true;//why does below log despite this
+        // console.log(player + ' wins');
+        return true;
 
         }//if true do this
 
-  return false; //does this make the code keep going?
+  return false; //what does this do again?
 };//checkwins
 
-$('.box').on('click', function(event) {
 
-var id = +event.currentTarget.id //the plus is a quicky way to parseint
+
+$('.box').on('click', function(event) {
+  var id = +event.currentTarget.id //the plus is a quicky way to parseint
 
   if (game[id] !== 0){
     alert('This square is already occupied');
+    console.log();('This square is already occupied');
     return;
   }//if occupied
+
+  console.log(game);
+  console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
 
   //if player 1:
   if (player === 1){
     game[id]='x';
-    checkWin('x');
-    document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='/Users/anusharutnam/wdi/projects/tictactoe/img/x.gif' />";
+    gameWon = checkWin('x');
+    if (gameWon){
+      alert('X marks the spot!... (X wins)');
+      console.log('X wins!');
+
+    }
+
+    var $img = $('<img>').attr({
+      id: 'img' + id,
+      src: 'img/x.gif'
+    });
+    $(this).append( $img );
     player = 2;
+    return;
   } else {
     game[id]='o';
-    checkWin('o');
-    document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='/Users/anusharutnam/wdi/projects/tictactoe/img/porthole.gif' />";
-    player= 1
+    gameWon = checkWin('o');
+    if( gameWon ){
+      alert('(insert nautical phrase here) o wins');
+      console.log(' o wins');
+    }
+    var $img = $('<img>').attr({
+      id: 'img' + id,
+      src: 'img/porthole.gif'
+    });
+    $(this).append( $img );
+    // document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='/Users/anusharutnam/wdi/projects/tictactoe/img/porthole.gif' />";
+    player = 1;
+return;
   }//else... p2
 
+  // check for draw
+  if ( !gameWon && !game.includes(0) ){
+    alert("It's a stalemate. To the poopdeck with all of you!")
+    console.log('stalemate'); //this isn't running
+  }//check tie
 
-    console.log(game);
-    console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
+
+
   }); //box
 
 
