@@ -1,7 +1,7 @@
 # Nautical Naughts and Crosses
 ## Play the classic game with a Maritime Twist.
 
-here is [my live site](https://fonts.google.com/specimen/Cardo)
+here is [my live site](https://a-rutnam.github.io/tictactoe/)
 
 Game instructions
 1. Begin by writing player 1 and then player 2's names into the input box.
