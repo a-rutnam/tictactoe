@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel');
 
 body {
-    background-image: url("/tictactoe/img/map background.jpg");
+    background-image: url("../img/map background.jpg");
     background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
@@ -15,7 +15,7 @@ font-family: 'Cinzel', serif;
 }
 
 .squares {
-  background-image: url('tictactoe/img/grid-min.png');
+  background-image: url('../img/grid-min.png');
   background-size: 100%;
   background-repeat: no-repeat;
   margin-left: auto;
