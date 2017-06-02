@@ -38,28 +38,29 @@ font-family: 'Cinzel', serif;
 }
 
 .namesAndPlay{
-
   display: block;
   text-align: center;
   margin-top: 50px;
 }
 
-#nameInput {
+#nameInput, #nameEnterButton {
   color: #000080;;
   font-family: 'Cinzel', serif;
   font-size:20pt;
   border: 1px, solid;
   border-color:#000080;
   border-radius: 4px;
+  background-color: white;
+}
+
+#nameInput{
   height:50px;
   width: 400px;
 }
 
-.inputText
-{
+.inputText{
     text-align: center;
 }
-
 
 #reset, #demo{
   width: 150px;

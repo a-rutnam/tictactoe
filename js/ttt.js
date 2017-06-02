@@ -4,19 +4,15 @@ var $img = $('<img>').attr({ src: ''
 });
 
 var player = 1; //change this depending on what random_boolean chooses
-
 var playerNames = [];
 
-
-
 $(document).ready(function () {
-
   // player names
   $( "#nameEnterButton" ).click(function() {
     nameInput = $('#nameInput').val()
     playerNames.push(nameInput)
     $('#nameInput').val("");
-    $('input').attr('placeholder',"Enter Second player's name");
+    $('input').attr('placeholder',"Enter Player 2's name");
     playerNames;
     if (playerNames.length === 2) { alert("Now click 'Who plays first' below.")
       $('input').attr('placeholder',"Click 'Who Plays' below.");
@@ -28,11 +24,11 @@ $(document).ready(function () {
   $('#demo').on('click', function(event) {
     var player1 = playerNames[0]
     var player2 = playerNames[1]
+
     var random_boolean = Math.random() >= 0.5; {
       if (random_boolean) {
       alert (player1 + " decides who plays first. Anchors aweigh - Start Playing!");
       } else {
-      // document.getElementById("demo").innerHTML =
       alert (player2 + " decides who plays first. Anchors aweigh - Start Playing!");
       } //else
     }//rando bools.
@@ -42,15 +38,12 @@ $(document).ready(function () {
   $( "#reset" ).click(function() {
     $('.box img').remove();
     game = [0,0,0,0,0,0,0,0,0]
+    player = 1;
   });//reset button
-
 
   console.log( "Let's Play!" );
 
-
   var checkWin = function (player) {
-  // if we called the function as checkWin('x'),
-  // then our local variable player will have the value 'x'
     if( (game[0] === player && game[1] === player && game[2] === player) || //row1
         (game[3] === player && game[4] === player && game[5] === player) || //row2
         (game[6] === player && game[7] === player && game[8] === player) || //row3
@@ -62,22 +55,17 @@ $(document).ready(function () {
           // console.log(player + ' wins');
           return true;
         }//if true do this
-
     return false; //what does this do again?
   };//checkwins
 
-
-
   $('.box').on('click', function(event) {
     var id = +event.currentTarget.id //the plus is a quicky way to parseint
-
     if (game[id] !== 0){
       alert('This square is already occupied');
       console.log();('This square is already occupied');
       return;
     }//if occupied
 
-  console.log(game);
   console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
 
   //if player 1:
@@ -99,16 +87,15 @@ $(document).ready(function () {
   } else {
     game[id]='o';
     gameWon = checkWin('o');
-    if( gameWon ){
-      alert('(insert nautical phrase here) o wins');
-      console.log(' o wins');
+  if( gameWon ){
+      alert('[insert nautical phrase here] O wins!');
+      console.log(' O wins!');
     }//if o won
     var $img = $('<img>').attr({
       id: 'img' + id,
       src: 'img/porthole.gif'
     });
     $(this).append( $img );
-    // document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='/Users/anusharutnam/wdi/projects/tictactoe/img/porthole.gif' />";
     player = 1;
     return;
   }//else... p2
@@ -120,20 +107,9 @@ $(document).ready(function () {
 
   }//check tie
 
-
-
   }); //box
 
-
 })//doc ready;
-
-// http://i.imgur.com/d6ocn90.png
-
-//read me containing link to live project
-//upload img
-
-//diff appearance themes
-
 
 
 
