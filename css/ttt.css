@@ -15,7 +15,7 @@ font-family: 'Cinzel', serif;
 }
 
 .squares {
-  background-image: url('/tictactoe/img/grid-min.png');
+  background-image: url('tictactoe/img/grid-min.png');
   background-size: 100%;
   background-repeat: no-repeat;
   margin-left: auto;
