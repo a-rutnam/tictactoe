@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel');
 
 body {
-    background-image: url("/../img/map background.jpg");
+    background-image: url("../img/map background.jpg");
     background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
