@@ -3,51 +3,43 @@ var gameWon = false;
 var $img = $('<img>').attr({ src: ''
 });
 
-
-// var showWinner =
-// get value of name input
-
 var player = 1; //change this depending on what random_boolean chooses
 
 var playerNames = [];
 
 
 
-
 $(document).ready(function () {
 
-// if theme === rel
-
-
-// player names
-$( "#nameEnterButton" ).click(function() {
-   nameInput = $('#nameInput').val()
-  playerNames.push(nameInput)
-  $('#nameInput').val("");
-    $('input').attr('placeholder',"Second player's name");
-playerNames;
-  return;
-});
+  // player names
+  $( "#nameEnterButton" ).click(function() {
+    nameInput = $('#nameInput').val()
+    playerNames.push(nameInput)
+    $('#nameInput').val("");
+    $('input').attr('placeholder',"Enter Second player's name");
+    playerNames;
+    if (playerNames.length === 2) { alert("Now click 'Who plays first' below.")
+      $('input').attr('placeholder',"Click 'Who Plays' below.");
+    }
+    return;
+  });
 
   // who plays first:
-$('.button').on('click', function(event) {
-  var player1 = playerNames[0] //why does this only work in console
-  var player2 = playerNames[1]
-  var random_boolean = Math.random() >= 0.5; {
-    if (random_boolean) {
+  $('#demo').on('click', function(event) {
+    var player1 = playerNames[0]
+    var player2 = playerNames[1]
+    var random_boolean = Math.random() >= 0.5; {
+      if (random_boolean) {
+      alert (player1 + " decides who plays first. Anchors aweigh - Start Playing!");
+      } else {
       // document.getElementById("demo").innerHTML =
-      alert (player1 + " decides who plays first. Start playing!");
-    } else {
-      // document.getElementById("demo").innerHTML =
-      alert (player2 + " decides who plays first. Start playing!");
-    } //else
-  }//rando bools.
-});//button
+      alert (player2 + " decides who plays first. Anchors aweigh - Start Playing!");
+      } //else
+    }//rando bools.
+  });//who plays first button
 
-// reset
-
-  $( ".reset" ).click(function() {
-
+  // reset
+  $( "#reset" ).click(function() {
     $('.box img').remove();
     game = [0,0,0,0,0,0,0,0,0]
   });//reset button
@@ -56,35 +48,34 @@ $('.button').on('click', function(event) {
   console.log( "Let's Play!" );
 
 
-var checkWin = function (player) {
-// if we called the function as checkWin('x'),
-// then our local variable player will have the value 'x'
-  if( (game[0] === player && game[1] === player && game[2] === player) || //row1
-      (game[3] === player && game[4] === player && game[5] === player) || //row2
-      (game[6] === player && game[7] === player && game[8] === player) || //row3
-      (game[0] === player && game[3] === player && game[6] === player) || //col1
-      (game[1] === player && game[4] === player && game[7] === player) || //col2
-      (game[2] === player && game[5] === player && game[8] === player) || //col3
-      (game[0] === player && game[4] === player && game[8] === player) || //diag1
-      (game[2] === player && game[4] === player && game[6] === player)){ //diag2
-        // console.log(player + ' wins');
-        return true;
-
+  var checkWin = function (player) {
+  // if we called the function as checkWin('x'),
+  // then our local variable player will have the value 'x'
+    if( (game[0] === player && game[1] === player && game[2] === player) || //row1
+        (game[3] === player && game[4] === player && game[5] === player) || //row2
+        (game[6] === player && game[7] === player && game[8] === player) || //row3
+        (game[0] === player && game[3] === player && game[6] === player) || //col1
+        (game[1] === player && game[4] === player && game[7] === player) || //col2
+        (game[2] === player && game[5] === player && game[8] === player) || //col3
+        (game[0] === player && game[4] === player && game[8] === player) || //diag1
+        (game[2] === player && game[4] === player && game[6] === player)){ //diag2
+          // console.log(player + ' wins');
+          return true;
         }//if true do this
 
-  return false; //what does this do again?
-};//checkwins
+    return false; //what does this do again?
+  };//checkwins
 
 
 
-$('.box').on('click', function(event) {
-  var id = +event.currentTarget.id //the plus is a quicky way to parseint
+  $('.box').on('click', function(event) {
+    var id = +event.currentTarget.id //the plus is a quicky way to parseint
 
-  if (game[id] !== 0){
-    alert('This square is already occupied');
-    console.log();('This square is already occupied');
-    return;
-  }//if occupied
+    if (game[id] !== 0){
+      alert('This square is already occupied');
+      console.log();('This square is already occupied');
+      return;
+    }//if occupied
 
   console.log(game);
   console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
@@ -96,8 +87,7 @@ $('.box').on('click', function(event) {
     if (gameWon){
       alert('X marks the spot!... (X wins)');
       console.log('X wins!');
-
-    }
+    }//if x won
 
     var $img = $('<img>').attr({
       id: 'img' + id,
@@ -112,7 +102,7 @@ $('.box').on('click', function(event) {
     if( gameWon ){
       alert('(insert nautical phrase here) o wins');
       console.log(' o wins');
-    }
+    }//if o won
     var $img = $('<img>').attr({
       id: 'img' + id,
       src: 'img/porthole.gif'
@@ -120,13 +110,14 @@ $('.box').on('click', function(event) {
     $(this).append( $img );
     // document.getElementById(event.currentTarget.id).innerHTML="<img id=img"+id+" src='/Users/anusharutnam/wdi/projects/tictactoe/img/porthole.gif' />";
     player = 1;
-return;
+    return;
   }//else... p2
 
   // check for draw
   if ( !gameWon && !game.includes(0) ){
     alert("It's a stalemate. To the poopdeck with all of you!")
     console.log('stalemate'); //this isn't running
+
   }//check tie
 
 
@@ -138,11 +129,9 @@ return;
 
 // http://i.imgur.com/d6ocn90.png
 
-//if stalemate
-//reset button
+//read me containing link to live project
 //upload img
-//change player dependng on rando
-//no more clicks allowed after win
+
 //diff appearance themes
 
 
