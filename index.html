@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Nautical Naughts and Crosses</title>
    <link rel="stylesheet" type="text/css" href="css/ttt.css">
+
   <script src="js/jquery.js"></script>
   <script src="js/ttt.js"></script>
 
@@ -12,8 +13,43 @@
 
 <h1>Nautical Naughts and Crosses</h1>
 
+<div id="b">
+  <img src="img/steamer.png" alt="">
+
+</div>
+
 <!-- game board -->
-  <div class="squares">
+<div class="mainArea">
+
+
+  <!-- LEft Player names input -->
+  <div class ="namesAndPlay" >
+
+    <div class="names" ></div>
+        <input id="nameInput" class='inputText' type="text" placeholder="Enter Player 1's name" />
+  <!-- enter button -->
+      <br>
+        <input id="nameEnterButton" type="button" value="Enter" />
+
+  <br>
+  <!-- who plays first button -->
+      <input id="whoFirst" type="image" src="img/whoPlaysFirst.png" alt="Who Plays First?"/>
+
+  <!-- reset button -->
+    <input id="reset" type="image" src="img/resetGameButton.png" alt="Reset Game"/>
+
+  </div>
+  <!-- names and play -->
+
+  <div class="scoreBox">
+
+  </div>
+
+</div>
+
+<!-- middle board -->
+
+  <div class="squares" align='center'>
       <div class= "box" id="0"></div>
       <div class= "box" id='1'></div>
       <div class= "box" id='2'></div>
@@ -24,24 +60,19 @@
       <div class= "box" id='7'></div>
       <div class= "box" id='8'></div>
   </div>
+  <!-- squares -->
+<!-- right score -->
 
-<!-- Player names input -->
-<div class ="namesAndPlay" >
+<!-- squareLevel -->
 
-  <div class="names" ></div>
-      <input id="nameInput" class='inputText' type="text" placeholder="Enter Player 1's name" />
-<!-- enter button -->
-      <input id="nameEnterButton" type="button" value="Enter" />
-
-<br>
-<!-- who plays first button -->
-    <input id="demo" type="image" src="/tictactoe/img/who plays first.png" alt="Who Plays First?"/>
-
-<!-- reset button -->
-
-  <input id="reset" type="image" src="/tictactoe/img/reset game button.png" alt="Reset Game"/>
+<!-- input names displayed -->
+<div class="vs">
+  <h2></h2>
 
 </div>
+
+
+
 
 
 

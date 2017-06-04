@@ -1,0 +1,170 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #666;
+}
+
+/* STRUCTURE */
+
+#pagewrap {
+	/*padding: 5px;*/
+	width: 100%;
+	margin: 10px auto;
+}
+header {
+	height: 100px;
+	padding: 0 15px;
+}
+#content {
+	width: 30%;
+	float: left;
+	padding: 5px 15px;
+}
+
+#middle {
+	width: 30%; /* Account for margins + border values */
+	float: left;
+	padding: 5px 15px;
+	margin: 0px 5px 5px 5px;
+}
+
+#sidebar {
+	width: 30%;
+	padding: 5px 15px;
+	float: left;
+}
+footer {
+	clear: both;
+	padding: 0 15px;
+}
+
+/************************************************************************************
+MEDIA QUERIES
+*************************************************************************************/
+/* for 980px or less */
+@media screen and (max-width: 980px) {
+
+	#pagewrap {
+		width: 94%;
+	}
+	#content {
+		width: 41%;
+		padding: 1% 4%;
+	}
+	#middle {
+		width: 41%;
+		padding: 1% 4%;
+		margin: 0px 0px 5px 5px;
+		float: right;
+	}
+
+	#sidebar {
+		clear: both;
+		padding: 1% 4%;
+		width: auto;
+		float: none;
+	}
+
+	header, footer {
+		padding: 1% 4%;
+	}
+}
+
+/* for 700px or less */
+@media screen and (max-width: 600px) {
+
+	#content {
+		width: auto;
+		float: none;
+	}
+
+	#middle {
+		width: auto;
+		float: none;
+		margin-left: 0px;
+	}
+
+	#sidebar {
+		width: auto;
+		float: none;
+	}
+
+}
+
+/* for 480px or less */
+@media screen and (max-width: 480px) {
+
+	header {
+		height: auto;
+	}
+	h1 {
+		font-size: 2em;
+	}
+	#sidebar {
+		display: none;
+	}
+
+}
+
+
+#content {
+	background: #f8f8f8;
+}
+#sidebar {
+	background: #f0efef;
+}
+header, #content, #middle, #sidebar {
+	margin-bottom: 5px;
+}
+
+#pagewrap, header, #content, #middle, #sidebar, footer {
+	border: solid 1px #ccc;
+}
+
+
+
+
+.namesAndPlay{
+  /*float: left;*/
+  /*display: block;*/
+  /*text-align: center;*/
+  /*width: 30%;*/
+  /*margin-top: 50px;*/
+	position: relative;
+  margin-left: 20px;
+}
+
+#nameInput, #nameEnterButton {
+  color: #000080;;
+  font-family: 'Cinzel', serif;
+  font-size:20pt;
+  border-color:#000080;
+  border-radius: 4px;
+  background-color: white;
+  border-style:solid;
+  position: relative;
+  /*float: right;*/
+  margin-left: 20px;
+
+}
+
+
+
+#nameInput{
+  height:50px;
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.inputText{
+    text-align: center;
+}
+
+#reset, #whoFirst{
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 5px;
+}
