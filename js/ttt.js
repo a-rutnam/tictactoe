@@ -67,12 +67,12 @@ $(document).ready(function () {
         alert (playerNames[0] + " plays first. Anchors aweigh - Start Playing!");
         firstPlayer.push(playerNames[0]);
         secondPlayer.push(playerNames[1]);
-        randoIndex.push(0);
+
       } else {
         alert (playerNames[1] + " plays first. Anchors aweigh - Start Playing!");
         firstPlayer.push(playerNames[1]);
         secondPlayer.push(playerNames[0]);
-        randoIndex.push(1);
+
       } //if second name entered wins
         console.log('first:'+ firstPlayer);
       }//rando bools.
@@ -118,14 +118,15 @@ $(document).ready(function () {
     $(this).append( $img );
     player = 2
 
-    //if x wins:
+    //if x wins://doesn't work when 2nd entered name goes first
     gameWon = checkWin('x');
     if (gameWon){
-      alert(playerNames[parseInt(player-1)]+ ' wins! X marks the spot!');
-      console.log(playerNames[parseInt(player-1)]+ ' wins! X marks the spot!');
-      xScore.push(1);
-      $( ".score"+parseInt(player-1)+"b" ).html( "<p>"+ xScore.length + "</p>" );
       player = 1;
+      alert(playerNames[(player)-1]+ ' wins! X marks the spot!');
+      console.log(playerNames[(player)-1]+ ' wins! X marks the spot!');
+      xScore.push(1);
+      $( ".score"+(player-1)+"b" ).html( "<p>"+ xScore.length + "</p>" );
+
     }//if x won
     return;
 
@@ -142,13 +143,15 @@ $(document).ready(function () {
     //if o wins
     gameWon = checkWin('o');
     if( gameWon ){
+      player = 2
+
       alert( playerNames[parseInt(player-1)]+' wins!'+' [insert O-related nautical phrase here]');
 
       console.log( playerNames[parseInt(player-1)]+' wins!'+' [insert O-related nautical phrase here]');
 
       oScore.push(1);
       $( ".score"+[player-1]+"b" ).html( "<p>"+ oScore.length + "</p>" );
-      player = 2
+
         return;
     }//if o won
   }//if player 2 clicks
@@ -169,7 +172,6 @@ $(document).ready(function () {
       // player = 1;
       firstPlayer = [];
       secondPlayer = [];
-      randoIndex = [];
 
 
 

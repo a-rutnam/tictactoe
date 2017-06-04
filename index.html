@@ -11,24 +11,25 @@
 </head>
 <body>
 
+<header>
 <h1>Nautical Naughts and Crosses</h1>
+</header>
 
 
-
-<!-- game board -->
 <div class="mainArea">
 
 
-  <!-- LEft Player names input -->
+<!-- LEFT COL: Player names input -->
   <div class ="namesAndPlay" >
 
-    <div class="names" ></div>
+    <!-- <div class="names" ></div> -->
         <input id="nameInput" class='inputText' type="text" placeholder="Enter Player 1's name" />
+
   <!-- enter button -->
       <br>
         <input id="nameEnterButton" type="button" value="Enter" />
+      <br>
 
-  <br>
   <!-- who plays first button -->
       <input id="whoFirst" type="image" src="img/whoPlaysFirst.png" alt="Who Plays First?"/>
 
@@ -36,29 +37,26 @@
     <input id="reset" type="image" src="img/resetGameButton.png" alt="Reset Game"/>
 
   </div>
-  <!-- names and play -->
 
 
+<!-- RIGHT HAND SCOREBOARD only works when placed in HTML here-->
 
+    <div class="scoreBox">
 
-  <div class="scoreBox">
+      <div id="b"><p></p></div>
 
-<div id="b"><p></p></div>
+      <div id="c"><p></p></div>
 
-<div id="c"><p></p></div>
-
-  <p class="score0">Score</p>
-  <p class="score0b"></p>
-  <p class="vs">Vs.</p>
-  <p class="score1">Score</p>
-  <p class="score1b"></p>
+      <p class="score0">Score</p>
+      <p class="score0b"></p>
+      <p class="vs">Vs.</p>
+      <p class="score1">Score</p>
+      <p class="score1b"></p>
 
     </div>
-  </div>
 
-</div>
 
-<!-- middle board -->
+<!-- MIDDLE COLUMN -->
 
   <div class="squares" align='center'>
       <div class= "box" id="0"></div>
@@ -71,16 +69,11 @@
       <div class= "box" id='7'></div>
       <div class= "box" id='8'></div>
   </div>
-  <!-- squares -->
-<!-- right score -->
 
-<!-- squareLevel -->
 
-<!-- input names displayed -->
-
-  <h2></h2>
 
 </div>
+
 
 
 

@@ -111,7 +111,7 @@ img {
 }
 
 .vs {
-  margin-top: 50%;
+  margin-top: 145px;
   font-size: 20pt;
   color: #000080;
   text-align: center;
@@ -121,7 +121,7 @@ img {
 .score0,.score1,.score0b,.score1b {
   text-align: right;
   color: #000080;
-  margin-right: 5px
+  margin-right: 10px
 }
 /*
 .score1{
