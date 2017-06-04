@@ -1,68 +1,84 @@
 var game = [0,0,0,0,0,0,0,0,0];
 var gameWon = false;
 var $img = $('<img>').attr({ src: ''});
-//maybe a separate player 1 and 2 $img
-var player = 1;
+
+var player = 1
 var playerNames = [];
+
+var firstPlayer = [];
+var secondPlayer = [];
+var xScore = [];
+var oScore = [];
 
 $(document).ready(function () {
 
+  //PLAYER NAMES
+  $( "#nameEnterButton" ).click(function() {
 
-
-
-    // player names
-    $( "#nameEnterButton" ).click(function() {
-      nameInput = $('#nameInput').val() //string typed to input box
-
-      playerNames.push(nameInput)//name 1st or 2nd is pushed to array
-
-      $('#nameInput').val("");//gets rid of input after click
-
-      $('input').attr('placeholder',"Enter Player 2's name");//adds p2 prompt placeholder
-
-      playerNames;//why is this here
-
-      if (playerNames.length === 1)
-        {$( ".vs" ).html( "<h1>"+playerNames[0]+" Vs. "+"</h2>" );//first name entered appears beneath board
-      }
-
-      if (playerNames.length === 2) {
-        alert("Now click 'Who plays first' below.")
-
-        $('input').attr('placeholder',"Click 'Who Plays' below.");//who plays prompt after 2 names entered
-
-        $( ".vs" ).html( "<h1>"+playerNames[0]+" Vs. "+playerNames[1]+"</h2>" );
-      }
-
-      if (playerNames.length === 3) {
-          // playerNames[2] = null;// not Necessary for rando below to work so need i worry?
-          alert("Only two players, you scoundrel! This isn't 'Naughts and Cross and Another Thing!'");
-          return;
-        }
+    if (playerNames.length === 2) { //too many names entered
+      alert("Only two players, you scoundrel! This isn't 'Naughts and Cross and Another Thing!'");
       return;
-    });//name button clicked
+    }
+    // return;
+
+    $('.scoreBox').fadeIn('slow'); //score box appears
+
+    nameInput = $('#nameInput').val() //string typed to input box saved
+
+    playerNames.push(nameInput)//name 1st or 2nd is pushed to array
+
+    $('#nameInput').val("");//gets rid of name input in box after click
+
+    $('input').attr('placeholder',"Enter Player 2's name");//adds p2 prompt placeholder
 
 
+    if (playerNames.length === 1){ //after one name entered
+      $( "#b" ).html( "<p>"+"The S.S. " + playerNames[0]+"</p>" );
+      //1st name entered appears on ship
+      $("#b").animate({left: "+=1500"}, 2000);
+      //1st ship slides in
+      $( ".vs" ).html( "<p>"+ "Vs." + "</p>" );
+      //vs appears beneath ship1
+    }
+
+    if (playerNames.length === 2) {//after two names entered
+      $('input').attr('placeholder',"Click 'Who Plays First' below.");
+      //placeholder changes to prompt to click 'who plays first button'
+
+      $( "#c" ).html( "<p>"+"HMAS " + playerNames[1]+"</p>" );
+      //2nd name entered appears on 2nd ship
+
+      $("#c").animate({left: "+=1500"}, 2000);
+      //2nd ship slides in
+
+      alert("Now click 'Who plays first' below.")
+      // alert prompt to click 'who plays first button'
+    }
+
+  });//name button clicked
 
 
-    // who plays first:
-    $('#whoFirst').on('click', function(event) {
-      var firstNameEntered = playerNames[0]
-      var secondNameEntered = playerNames[1]
+  // WHO PLAYS FIRST:
+  $('#whoFirst').on('click', function(event) {
 
-      var random_boolean = Math.random() >= 0.5; {
-        if (random_boolean) {
-          alert (firstNameEntered + " decides who plays first. Anchors aweigh - Start Playing!");
-        } else {
-          alert (secondNameEntered + " decides who plays first. Anchors aweigh - Start Playing!");
-        } //else. make shorter
+
+    var random_boolean = Math.random() >= 0.5; {
+      if (random_boolean) {
+        alert (playerNames[0] + " plays first. Anchors aweigh - Start Playing!");
+        firstPlayer.push(playerNames[0]);
+        secondPlayer.push(playerNames[1]);
+        randoIndex.push(0);
+      } else {
+        alert (playerNames[1] + " plays first. Anchors aweigh - Start Playing!");
+        firstPlayer.push(playerNames[1]);
+        secondPlayer.push(playerNames[0]);
+        randoIndex.push(1);
+      } //if second name entered wins
+        console.log('first:'+ firstPlayer);
       }//rando bools.
     });//who plays first button. Ideally now picked player picks their token and goes
 
 
-// Jim and Jerry.
-// Jerry is picked by rando to go first. Therefore player 1 is Jerry.
-//Jerry clicks on a token image and the src of it becomes what is appended when he click a square
 
   console.log( "Let's Play!" );
 
@@ -91,38 +107,51 @@ $(document).ready(function () {
 
   console.log('player '+player+ ' clicked on Square '+event.currentTarget.id);
 
-  //if player 1: this makes player 1 always x, change that
+  //if player 1 clicks:
   if (player === 1){
     game[id]='x';
 
-    gameWon = checkWin('x');
-    if (gameWon){
-      alert('X marks the spot!... (X wins)');
-      console.log('X wins!');
-    }//if x won
     var $img = $('<img>').attr({
       id: 'img' + id,
       src: 'img/x.gif'
     });
     $(this).append( $img );
-    player = 2;
+    player = 2
+
+    //if x wins:
+    gameWon = checkWin('x');
+    if (gameWon){
+      alert(playerNames[parseInt(player-1)]+ ' wins! X marks the spot!');
+      console.log(playerNames[parseInt(player-1)]+ ' wins! X marks the spot!');
+      xScore.push(1);
+      $( ".score"+parseInt(player-1)+"b" ).html( "<p>"+ xScore.length + "</p>" );
+      player = 1;
+    }//if x won
     return;
 
+    //if player 2 clicks
   } else {
     game[id]='o';
-    gameWon = checkWin('o');
-  if( gameWon ){
-      alert('[insert nautical phrase here] O wins!');
-      console.log(' O wins!');
-    }//if o won
     var $img = $('<img>').attr({
       id: 'img' + id,
       src: 'img/porthole.gif'
     });
     $(this).append( $img );
     player = 1;
-    return;
-  }//else... p2
+
+    //if o wins
+    gameWon = checkWin('o');
+    if( gameWon ){
+      alert( playerNames[parseInt(player-1)]+' wins!'+' [insert O-related nautical phrase here]');
+
+      console.log( playerNames[parseInt(player-1)]+' wins!'+' [insert O-related nautical phrase here]');
+
+      oScore.push(1);
+      $( ".score"+[player-1]+"b" ).html( "<p>"+ oScore.length + "</p>" );
+      player = 2
+        return;
+    }//if o won
+  }//if player 2 clicks
 
   // check for draw
     if ( !gameWon && !game.includes(0) ){
@@ -137,10 +166,13 @@ $(document).ready(function () {
     $( "#reset" ).click(function() {
       $('.box img').remove();
       game = [0,0,0,0,0,0,0,0,0]
-      player = 1;
+      // player = 1;
+      firstPlayer = [];
+      secondPlayer = [];
+      randoIndex = [];
 
 
-      $("#b, #c").animate({left: "+=1500"}, 2000);
+
 
 
     });//reset button

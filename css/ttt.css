@@ -101,10 +101,11 @@ img {
 /*right main*/
 
 .scoreBox {
+  display: none;
   background-color: white;
   opacity: .7;
-  width: 30%;
-  height: 600px;
+  width:30%;
+  height:600px;
   float: right;
   text-align: center;
 }
@@ -114,7 +115,23 @@ img {
   font-size: 20pt;
   color: #000080;
   text-align: center;
+
 }
+
+.score0,.score1,.score0b,.score1b {
+  text-align: right;
+  color: #000080;
+  margin-right: 5px
+}
+/*
+.score1{
+  text-align: right;
+  color: #000080;
+  margin-right: 5px
+
+}*/
+
+
 
 /*steamer*/
 
