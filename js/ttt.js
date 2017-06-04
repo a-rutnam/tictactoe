@@ -140,8 +140,7 @@ $(document).ready(function () {
       player = 1;
 
 
-    $("#b").animate({left: "+=500"}, 2000);
-    
+      $("#b, #c").animate({left: "+=1500"}, 2000);
 
 
     });//reset button

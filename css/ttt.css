@@ -14,6 +14,7 @@ body {
     background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
+    font-family: 'Cinzel', serif;
 }
 
 img {
@@ -33,7 +34,7 @@ img {
 }
 
 #nameInput, #nameEnterButton {
-  color: #000080;;
+  color: #000080;
   font-family: 'Cinzel', serif;
   font-size:20pt;
   border-color:#000080;
@@ -66,13 +67,6 @@ img {
   padding: 5px;
 }
 
-/*steamer*/
-
-#b{
-  width: 250px;
-  position: absolute;
-  top:50px;
-}
 
 
 /*centre main*/
@@ -110,8 +104,54 @@ img {
   background-color: white;
   opacity: .7;
   width: 30%;
-  height: 500px;
+  height: 600px;
   float: right;
+  text-align: center;
+}
+
+.vs {
+  margin-top: 50%;
+  font-size: 20pt;
+  color: #000080;
+  text-align: center;
+}
+
+/*steamer*/
 
 
+
+
+#b{
+  position:absolute;
+  margin-top:10px;
+  margin-left: -105%;
+  background-image: url("../img/boat1.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 100%
+}
+
+#b p{
+  color: white;
+  margin-top: 130px;
+  margin-left: -160px;
+}
+
+
+#c{
+  position:absolute;
+  margin-top:270px;
+  margin-left: -105%;
+  background-image: url("../img/boat2.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 100%
+}
+
+#c p{
+  color: white;
+  margin-top: 245px;
+  margin-left: -160px;
 }
