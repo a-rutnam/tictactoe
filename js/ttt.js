@@ -12,15 +12,16 @@ var oScore = [];
 
 $(document).ready(function () {
 
-  //PLAYER NAMES
+//PLAYER NAMES
   $( "#nameEnterButton" ).click(function() {
 
-    if (playerNames.length === 2) { //too many names entered
+//more than two names entered:
+    if (playerNames.length === 2) {
       alert("Only two players, you scoundrel! This isn't 'Naughts and Cross and Another Thing!'");
       return;
     }
-    // return;
 
+// after one name entered:
     $('.scoreBox').fadeIn('slow'); //score box appears
 
     nameInput = $('#nameInput').val() //string typed to input box saved
@@ -41,7 +42,8 @@ $(document).ready(function () {
       //vs appears beneath ship1
     }
 
-    if (playerNames.length === 2) {//after two names entered
+//after two names entered
+    if (playerNames.length === 2) {
       $('input').attr('placeholder',"Click 'Who Plays First' below.");
       //placeholder changes to prompt to click 'who plays first button'
 
@@ -81,6 +83,8 @@ $(document).ready(function () {
 
 
   console.log( "Let's Play!" );
+
+//GAME
 
   var checkWin = function (player) {
     if( (game[0] === player && game[1] === player && game[2] === player) || //row1
